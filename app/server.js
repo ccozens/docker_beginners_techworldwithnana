@@ -43,7 +43,7 @@ app.post('/update-profile', function (req, res) {
 	const userObj = req.body;
 
 	MongoClient.connect(
-		mongoUrlLocal,
+		mongoUrlLocal, // update to mongoUrlDocker if running in container
 		mongoClientOptions,
 		function (err, client) {
 			if (err) throw err;
@@ -70,7 +70,7 @@ app.post('/update-profile', function (req, res) {
 });
 
 app.get('/get-profile', function (req, res) {
-	const response = {};
+	let response = {};
 	// Connect to the db
 	MongoClient.connect(
 		mongoUrlLocal,
